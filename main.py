@@ -22,7 +22,7 @@ def main() -> None:
 
 def get_table_value(table: list[int]) -> int:
     def sum_indeces(*indeces: list[int]) -> int:
-        return sum([table[i] for i in indeces])
+        return sum(table[i] for i in indeces)
 
     sums = [
         sum_indeces(0,1,2),
