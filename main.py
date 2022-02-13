@@ -6,18 +6,23 @@ from itertools import permutations
 def main() -> None:
     dice_values = [int(i) for i in input().strip().split() if i != ""]
     assert len(dice_values) == 9
-    tables_values: dict[int, list[int]] = {}
+    tables_values: dict[int, list[list[int]]] = {}
 
     for throws in set(permutations(dice_values)):
         table = list(throws)
         table_value = get_table_value(table)
-        tables_values[table_value] = table
+        
+        if table_value not in tables_values: tables_values[table_value] = []
+        tables_values[table_value].append(table)
     
     best_value, best_table = sorted(tables_values.items())[-1]
     
-    print(best_table[:3])
-    print(best_table[3:6])
-    print(best_table[6:])
+    for tab in best_table:
+        print("---")
+        print(tab[:3])
+        print(tab[3:6])
+        print(tab[6:])
+        # break #? Uncomment for a single table
     print(best_value)
 
 def get_table_value(table: list[int]) -> int:
