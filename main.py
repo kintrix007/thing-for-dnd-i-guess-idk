@@ -35,7 +35,7 @@ def get_table_value(table: list[int]) -> int:
         sum_indeces(2,4,6),
     ]
 
-    return sum(sorted(sums)[:-2])
+    return sum(sorted(sums)[2:])
 
 
 if __name__ == "__main__":
